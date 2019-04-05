@@ -1,0 +1,1478 @@
+Cloning into '../vue-storefront-api'...
+npm WARN deprecated circular-json@0.3.3: CircularJSON is in maintenance only, flatted is its successor.
+npm WARN lifecycle The node binary used for scripts is /var/folders/t4/7dqgpzps2316wmbqlcrqlqcw0000gp/T/yarn--1552912432383-0.61186707858216/node but npm is using /usr/local/Cellar/node/11.11.0/bin/node itself. Use the `--scripts-prepend-node-path` option to include the path for the node binary npm was executed with.
+
+> fsevents@1.2.7 install /Users/wgoldsworthy/Documents/Code/vue-storefront-api/node_modules/fsevents
+> node install
+
+node-pre-gyp WARN Using request for node-pre-gyp https download 
+[fsevents] Success: "/Users/wgoldsworthy/Documents/Code/vue-storefront-api/node_modules/fsevents/lib/binding/Release/node-v64-darwin-x64/fse.node" is installed via remote
+
+> sharp@0.21.3 install /Users/wgoldsworthy/Documents/Code/vue-storefront-api/node_modules/sharp
+> (node install/libvips && node install/dll-copy && prebuild-install) || (node-gyp rebuild && node install/dll-copy)
+
+info sharp Using cached /Users/wgoldsworthy/.npm/_libvips/libvips-8.7.0-darwin-x64.tar.gz
+
+> nodemon@1.18.10 postinstall /Users/wgoldsworthy/Documents/Code/vue-storefront-api/node_modules/nodemon
+> node bin/postinstall || exit 0
+
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN merge-graphql-schemas@1.5.8 requires a peer of graphql@^0.11.7 || ^0.13.0 || ^14.0.2 but none is installed. You must install peer dependencies yourself.
+npm WARN ajv-keywords@2.1.1 requires a peer of ajv@^5.0.0 but none is installed. You must install peer dependencies yourself.
+
+added 985 packages from 698 contributors in 29.018s
+$ node scripts/mage2vs.js import
+=== The mage2vuestorefront full reindex is about to start. Using the following Magento2 config === { TIME_TO_EXIT: 2000,
+  PRODUCTS_SPECIAL_PRICES: true,
+  SKIP_REVIEWS: false,
+  SKIP_CATEGORIES: false,
+  SKIP_PRODUCTCATEGORIES: false,
+  SKIP_ATTRIBUTES: false,
+  SKIP_TAXRULE: false,
+  SKIP_PRODUCTS: false,
+  PRODUCTS_EXCLUDE_DISABLED: false,
+  MAGENTO_CONSUMER_KEY: 'g8a6e5twldwesdm7nqvp2xbm1b7xxe7k',
+  MAGENTO_CONSUMER_SECRET: 'bqdjspuxortbqq3uatp5gpm93asozvvf',
+  MAGENTO_ACCESS_TOKEN: '71ve6a0cjhvge49z65c5jcsip1q4knov',
+  MAGENTO_ACCESS_TOKEN_SECRET: '6s18auw7l294x5xtiria4r56qi5qio45',
+  MAGENTO_URL: 'http://vuesto-5278.bolt54.servebolt.com/magento2/rest/',
+  REDIS_HOST: 'localhost',
+  REDIS_PORT: 6379,
+  INDEX_NAME: 'vue_storefront_catalog',
+  DATABASE_URL: 'http://localhost:9200' }
+ == CREATING NEW DATABASE ==
+Elasticsearch INFO: 2019-03-18T12:35:38Z
+  Adding connection to http://localhost:9200/
+
+
+** Hello! I am going to create NEW ES index
+
+Elasticsearch DEBUG: 2019-03-18T12:35:38Z
+  starting request {
+    "method": "DELETE",
+    "path": "/*/_alias/vue_storefront_catalog",
+    "query": {}
+  }
+  
+
+
+Elasticsearch DEBUG: 2019-03-18T12:35:38Z
+  Request complete
+
+
+Public index alias does not exists [aliases_not_found_exception] aliases [vue_storefront_catalog] missing, with { resource.type="aliases" & resource.id="vue_storefront_catalog" }
+
+Elasticsearch DEBUG: 2019-03-18T12:35:38Z
+  starting request {
+    "method": "DELETE",
+    "path": "/vue_storefront_catalog",
+    "query": {}
+  }
+  
+
+
+Elasticsearch DEBUG: 2019-03-18T12:35:38Z
+  Request complete
+
+
+{ acknowledged: [33mtrue[39m }
+
+Elasticsearch DEBUG: 2019-03-18T12:35:38Z
+  starting request {
+    "method": "PUT",
+    "path": "/vue_storefront_catalog",
+    "body": {
+      "settings": {
+        "analysis": {
+          "tokenizer": {
+            "comma": {
+              "type": "pattern",
+              "pattern": ","
+            }
+          },
+          "analyzer": {
+            "comma": {
+              "type": "custom",
+              "tokenizer": "comma"
+            }
+          }
+        }
+      }
+    },
+    "query": {}
+  }
+  
+
+
+Elasticsearch DEBUG: 2019-03-18T12:35:38Z
+  Request complete
+
+
+{ acknowledged: [33mtrue[39m,
+  shards_acknowledged: [33mtrue[39m,
+  index: [32m'vue_storefront_catalog'[39m }
+
+Done! Bye!
+
+ == REVIEWS IMPORTER ==
+2019-03-18T12:35:38.703Z - [34mdebug[39m: Elasticsearch module initialized!
+
+[32minfo[39m: Winston logging library initialized.
+
+2019-03-18T12:35:38.862Z - [32minfo[39m: Cleaning up with tsk = 1552912538838
+
+2019-03-18T12:35:38.865Z - [32minfo[39m: Connected correctly to server
+
+2019-03-18T12:35:38.865Z - [32minfo[39m: TRANSACTION KEY = 1552912538838
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/reviews/?searchCriteria=undefined
+
+2019-03-18T12:35:38.924Z - [32minfo[39m:  
+{ took: [33m18[39m,
+  timed_out: [33mfalse[39m,
+  total: [33m0[39m,
+  deleted: [33m0[39m,
+  batches: [33m0[39m,
+  version_conflicts: [33m0[39m,
+  noops: [33m0[39m,
+  retries: { bulk: [33m0[39m, search: [33m0[39m },
+  throttled_millis: [33m0[39m,
+  requests_per_second: [33m-1[39m,
+  throttled_until_millis: [33m0[39m,
+  failures: [] }
+
+[34mdebug[39m: Response received.
+
+[31merror[39m: API call failed: Request does not match any route.
+
+2019-03-18T12:35:39.075Z - [31merror[39m:  
+{ message: [32m'Request does not match any route.'[39m,
+  stack:
+   [32m'Error: Request does not match any route.\n    at api.reviews.list.catch (/Users/wgoldsworthy/Documents/Code/vue-storefront-api/node_modules/mage2vuestorefront/src/adapters/magento/review.js:27:13)\n    at process._tickCallback (internal/process/next_tick.js:68:7)'[39m }
+
+2019-03-18T12:35:39.076Z - [32minfo[39m: Task done! Exiting in 30s...
+
+ == CATEGORIES IMPORTER ==
+2019-03-18T12:35:41.464Z - [34mdebug[39m: Elasticsearch module initialized!
+
+[32minfo[39m: Winston logging library initialized.
+
+2019-03-18T12:35:41.522Z - [32minfo[39m: Connected correctly to server
+
+2019-03-18T12:35:41.522Z - [32minfo[39m: TRANSACTION KEY = 1552912541497
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/categories
+
+[34mdebug[39m: Response received.
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/categories/2
+
+[34mdebug[39m: Response received.
+
+2019-03-18T12:35:42.181Z - [34mdebug[39m: Storing extended category data to cache under: vue_storefront_catalog_cat_2
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/categories/3
+
+[34mdebug[39m: Response received.
+
+2019-03-18T12:35:42.498Z - [32minfo[39m: Subcategory data extended for 2, children object 3
+
+2019-03-18T12:35:42.499Z - [32minfo[39m: Importing 0 of 1 - [(2) Default Category] with tsk = 1552912541497
+
+2019-03-18T12:35:42.499Z - [32minfo[39m: Tasks count = 0
+
+2019-03-18T12:35:42.503Z - [32minfo[39m: --L:0 Processing child items ...
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/categories/3
+
+2019-03-18T12:35:42.505Z - [34mdebug[39m: --L:0 Level done! Current page: 1 of 0
+
+[34mdebug[39m: Response received.
+
+2019-03-18T12:35:42.862Z - [34mdebug[39m: Storing extended category data to cache under: vue_storefront_catalog_cat_3
+
+2019-03-18T12:35:42.863Z - [32minfo[39m: Importing 0 of 1 - [(3) Drinks] with tsk = 1552912541497
+
+2019-03-18T12:35:42.863Z - [32minfo[39m: Tasks count = 0
+
+2019-03-18T12:35:42.863Z - [32minfo[39m: No tasks to process. All records processed!
+
+2019-03-18T12:35:42.863Z - [32minfo[39m: Cleaning up with tsk = 1552912541497
+
+2019-03-18T12:35:42.864Z - [32minfo[39m: Task done! Exiting in 30s...
+
+2019-03-18T12:35:42.874Z - [32minfo[39m:  
+{ took: [33m4[39m,
+  timed_out: [33mfalse[39m,
+  total: [33m0[39m,
+  deleted: [33m0[39m,
+  batches: [33m0[39m,
+  version_conflicts: [33m0[39m,
+  noops: [33m0[39m,
+  retries: { bulk: [33m0[39m, search: [33m0[39m },
+  throttled_millis: [33m0[39m,
+  requests_per_second: [33m-1[39m,
+  throttled_until_millis: [33m0[39m,
+  failures: [] }
+
+ == PRODUCT-CATEGORIES IMPORTER ==
+2019-03-18T12:35:45.100Z - [34mdebug[39m: Elasticsearch module initialized!
+
+[32minfo[39m: Winston logging library initialized.
+
+2019-03-18T12:35:45.266Z - [32minfo[39m: Connected correctly to server
+
+2019-03-18T12:35:45.266Z - [32minfo[39m: TRANSACTION KEY = 1552912545242
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/categories
+
+[34mdebug[39m: Response received.
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/categories/2/products
+
+[34mdebug[39m: Response received.
+
+2019-03-18T12:35:45.786Z - [34mdebug[39m: Storing category assigments in REDIS cache for 2
+
+2019-03-18T12:35:45.786Z - [32minfo[39m: The task count still is = 1
+
+2019-03-18T12:35:45.787Z - [32minfo[39m: Importing 0 of 1 - [(2) Default Category] with tsk = 1552912545242
+
+2019-03-18T12:35:45.787Z - [32minfo[39m: Tasks count = 0
+2019-03-18T12:35:45.787Z - [32minfo[39m: --L:0 Processing child items ...
+
+2019-03-18T12:35:45.787Z - [34mdebug[39m: Skiping database update
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/categories/3/products
+
+2019-03-18T12:35:45.789Z - [34mdebug[39m: --L:0 Level done! Current page: 1 of 0
+
+[34mdebug[39m: Response received.
+
+2019-03-18T12:35:46.082Z - [34mdebug[39m: Storing category assigments in REDIS cache for 3
+
+2019-03-18T12:35:46.082Z - [32minfo[39m: The task count still is = 1
+
+2019-03-18T12:35:46.082Z - [32minfo[39m: Importing 0 of 1 - [(3) Drinks] with tsk = 1552912545242
+2019-03-18T12:35:46.082Z - [32minfo[39m: Tasks count = 0
+
+2019-03-18T12:35:46.082Z - [34mdebug[39m: Skiping database update
+
+2019-03-18T12:35:46.082Z - [32minfo[39m: No tasks to process. All records processed!
+
+2019-03-18T12:35:46.083Z - [32minfo[39m: Renaming the cache key to production! 
+
+2019-03-18T12:35:46.083Z - [32minfo[39m: Publishing cache keys to production finished!
+
+2019-03-18T12:35:46.083Z - [32minfo[39m: Task done! Exiting in 30s...
+
+ == ATTRIBUTES IMPORTER ==
+2019-03-18T12:35:48.323Z - [34mdebug[39m: Elasticsearch module initialized!
+
+[32minfo[39m: Winston logging library initialized.
+
+2019-03-18T12:35:48.487Z - [32minfo[39m: Connected correctly to server
+
+2019-03-18T12:35:48.487Z - [32minfo[39m: TRANSACTION KEY = 1552912548463
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/products/attributes?searchCriteria=undefined
+
+[34mdebug[39m: Response received.
+
+2019-03-18T12:35:49.021Z - [32minfo[39m: Total count is: 63
+
+2019-03-18T12:35:49.021Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_name
+
+2019-03-18T12:35:49.022Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_73
+
+2019-03-18T12:35:49.022Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_sku
+
+2019-03-18T12:35:49.022Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_74
+
+2019-03-18T12:35:49.022Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_description
+
+2019-03-18T12:35:49.022Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_75
+
+2019-03-18T12:35:49.022Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_short_description
+
+2019-03-18T12:35:49.022Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_76
+
+2019-03-18T12:35:49.023Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_price
+
+2019-03-18T12:35:49.023Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_77
+
+2019-03-18T12:35:49.023Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_special_price
+
+2019-03-18T12:35:49.023Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_78
+
+2019-03-18T12:35:49.023Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_special_from_date
+
+2019-03-18T12:35:49.023Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_79
+
+2019-03-18T12:35:49.023Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_special_to_date
+
+2019-03-18T12:35:49.023Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_80
+
+2019-03-18T12:35:49.024Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_cost
+
+2019-03-18T12:35:49.024Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_81
+
+2019-03-18T12:35:49.024Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_weight
+
+2019-03-18T12:35:49.024Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_82
+
+2019-03-18T12:35:49.024Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_manufacturer
+
+2019-03-18T12:35:49.024Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_83
+
+2019-03-18T12:35:49.024Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_meta_title
+
+2019-03-18T12:35:49.025Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_84
+
+2019-03-18T12:35:49.025Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_meta_keyword
+
+2019-03-18T12:35:49.025Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_85
+
+2019-03-18T12:35:49.025Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_meta_description
+
+2019-03-18T12:35:49.025Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_86
+
+2019-03-18T12:35:49.025Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_image
+
+2019-03-18T12:35:49.025Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_87
+
+2019-03-18T12:35:49.025Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_small_image
+
+2019-03-18T12:35:49.026Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_88
+
+2019-03-18T12:35:49.026Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_thumbnail
+
+2019-03-18T12:35:49.026Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_89
+
+2019-03-18T12:35:49.026Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_media_gallery
+
+2019-03-18T12:35:49.026Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_90
+
+2019-03-18T12:35:49.026Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_old_id
+
+2019-03-18T12:35:49.026Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_91
+
+2019-03-18T12:35:49.026Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_tier_price
+
+2019-03-18T12:35:49.026Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_92
+
+2019-03-18T12:35:49.026Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_color
+2019-03-18T12:35:49.026Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_93
+
+2019-03-18T12:35:49.027Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_news_from_date
+
+2019-03-18T12:35:49.027Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_94
+
+2019-03-18T12:35:49.027Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_news_to_date
+
+2019-03-18T12:35:49.027Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_95
+
+2019-03-18T12:35:49.027Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_gallery
+
+2019-03-18T12:35:49.027Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_96
+
+2019-03-18T12:35:49.027Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_status
+
+2019-03-18T12:35:49.027Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_97
+
+2019-03-18T12:35:49.027Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_minimal_price
+
+2019-03-18T12:35:49.028Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_98
+
+2019-03-18T12:35:49.028Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_visibility
+
+2019-03-18T12:35:49.028Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_99
+
+2019-03-18T12:35:49.028Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_custom_design
+
+2019-03-18T12:35:49.028Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_100
+
+2019-03-18T12:35:49.028Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_custom_design_from
+
+2019-03-18T12:35:49.028Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_101
+
+2019-03-18T12:35:49.028Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_custom_design_to
+
+2019-03-18T12:35:49.028Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_102
+
+2019-03-18T12:35:49.029Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_custom_layout_update
+
+2019-03-18T12:35:49.029Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_103
+
+2019-03-18T12:35:49.029Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_page_layout
+
+2019-03-18T12:35:49.029Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_104
+
+2019-03-18T12:35:49.029Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_category_ids
+
+2019-03-18T12:35:49.029Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_105
+
+2019-03-18T12:35:49.029Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_options_container
+
+2019-03-18T12:35:49.029Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_106
+
+2019-03-18T12:35:49.029Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_required_options
+
+2019-03-18T12:35:49.030Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_107
+
+2019-03-18T12:35:49.030Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_has_options
+
+2019-03-18T12:35:49.030Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_108
+
+2019-03-18T12:35:49.030Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_image_label
+
+2019-03-18T12:35:49.030Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_109
+
+2019-03-18T12:35:49.030Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_small_image_label
+
+2019-03-18T12:35:49.030Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_110
+
+2019-03-18T12:35:49.030Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_thumbnail_label
+
+2019-03-18T12:35:49.030Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_111
+
+2019-03-18T12:35:49.030Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_created_at
+
+2019-03-18T12:35:49.031Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_112
+
+2019-03-18T12:35:49.031Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_updated_at
+
+2019-03-18T12:35:49.031Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_113
+
+2019-03-18T12:35:49.031Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_country_of_manufacture
+
+2019-03-18T12:35:49.031Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_114
+
+2019-03-18T12:35:49.031Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_quantity_and_stock_status
+
+2019-03-18T12:35:49.031Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_115
+
+2019-03-18T12:35:49.031Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_custom_layout
+
+2019-03-18T12:35:49.032Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_116
+
+2019-03-18T12:35:49.032Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_msrp
+
+2019-03-18T12:35:49.032Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_117
+
+2019-03-18T12:35:49.032Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_msrp_display_actual_price_type
+
+2019-03-18T12:35:49.032Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_118
+
+2019-03-18T12:35:49.032Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_url_key
+
+2019-03-18T12:35:49.032Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_121
+
+2019-03-18T12:35:49.032Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_url_path
+
+2019-03-18T12:35:49.032Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_122
+
+2019-03-18T12:35:49.032Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_links_purchased_separately
+
+2019-03-18T12:35:49.032Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_123
+
+2019-03-18T12:35:49.033Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_samples_title
+
+2019-03-18T12:35:49.033Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_124
+
+2019-03-18T12:35:49.033Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_links_title
+
+2019-03-18T12:35:49.033Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_125
+
+2019-03-18T12:35:49.033Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_links_exist
+
+2019-03-18T12:35:49.033Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_126
+
+2019-03-18T12:35:49.033Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_gift_message_available
+
+2019-03-18T12:35:49.033Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_127
+
+2019-03-18T12:35:49.033Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_swatch_image
+
+2019-03-18T12:35:49.033Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_128
+
+2019-03-18T12:35:49.034Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_tax_class_id
+
+2019-03-18T12:35:49.034Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_129
+
+2019-03-18T12:35:49.034Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_price_type
+
+2019-03-18T12:35:49.034Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_130
+
+2019-03-18T12:35:49.034Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_sku_type
+
+2019-03-18T12:35:49.034Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_131
+
+2019-03-18T12:35:49.034Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_weight_type
+
+2019-03-18T12:35:49.034Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_132
+
+2019-03-18T12:35:49.034Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_price_view
+
+2019-03-18T12:35:49.034Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_133
+
+2019-03-18T12:35:49.035Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_shipment_type
+
+2019-03-18T12:35:49.035Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_134
+
+2019-03-18T12:35:49.035Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_ts_dimensions_length
+
+2019-03-18T12:35:49.035Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_135
+
+2019-03-18T12:35:49.035Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_ts_dimensions_width
+
+2019-03-18T12:35:49.035Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_136
+
+2019-03-18T12:35:49.035Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_ts_dimensions_height
+
+2019-03-18T12:35:49.035Z - [34mdebug[39m: Storing attribute data to cache under: vue_storefront_catalog_attr_137
+
+2019-03-18T12:35:49.035Z - [32minfo[39m: Importing 0 of 63 - [(name) Product Name] with tsk = 1552912548463
+
+2019-03-18T12:35:49.036Z - [32minfo[39m: Tasks count = 62
+
+2019-03-18T12:35:49.038Z - [32minfo[39m: Importing 1 of 63 - [(sku) SKU] with tsk = 1552912548463
+
+2019-03-18T12:35:49.039Z - [32minfo[39m: Tasks count = 61
+
+2019-03-18T12:35:49.039Z - [32minfo[39m: Importing 2 of 63 - [(description) Description] with tsk = 1552912548463
+
+2019-03-18T12:35:49.039Z - [32minfo[39m: Tasks count = 60
+
+2019-03-18T12:35:49.039Z - [32minfo[39m: Importing 3 of 63 - [(short_description) Short Description] with tsk = 1552912548463
+
+2019-03-18T12:35:49.039Z - [32minfo[39m: Tasks count = 59
+
+2019-03-18T12:35:49.039Z - [32minfo[39m: Importing 4 of 63 - [(price) Price] with tsk = 1552912548463
+
+2019-03-18T12:35:49.039Z - [32minfo[39m: Tasks count = 58
+
+2019-03-18T12:35:49.040Z - [32minfo[39m: Importing 5 of 63 - [(special_price) Special Price] with tsk = 1552912548463
+
+2019-03-18T12:35:49.040Z - [32minfo[39m: Tasks count = 57
+
+2019-03-18T12:35:49.040Z - [32minfo[39m: Importing 6 of 63 - [(special_from_date) Special Price From Date] with tsk = 1552912548463
+
+2019-03-18T12:35:49.040Z - [32minfo[39m: Tasks count = 56
+
+2019-03-18T12:35:49.040Z - [32minfo[39m: Importing 7 of 63 - [(special_to_date) Special Price To Date] with tsk = 1552912548463
+
+2019-03-18T12:35:49.040Z - [32minfo[39m: Tasks count = 55
+
+2019-03-18T12:35:49.040Z - [32minfo[39m: Importing 8 of 63 - [(cost) Cost] with tsk = 1552912548463
+
+2019-03-18T12:35:49.040Z - [32minfo[39m: Tasks count = 54
+
+2019-03-18T12:35:49.040Z - [32minfo[39m: Importing 9 of 63 - [(weight) Weight] with tsk = 1552912548463
+2019-03-18T12:35:49.040Z - [32minfo[39m: Tasks count = 53
+
+2019-03-18T12:35:49.040Z - [32minfo[39m: Importing 10 of 63 - [(manufacturer) Manufacturer] with tsk = 1552912548463
+2019-03-18T12:35:49.040Z - [32minfo[39m: Tasks count = 52
+
+2019-03-18T12:35:49.041Z - [32minfo[39m: Importing 11 of 63 - [(meta_title) Meta Title] with tsk = 1552912548463
+2019-03-18T12:35:49.041Z - [32minfo[39m: Tasks count = 51
+
+2019-03-18T12:35:49.041Z - [32minfo[39m: Importing 12 of 63 - [(meta_keyword) Meta Keywords] with tsk = 1552912548463
+2019-03-18T12:35:49.041Z - [32minfo[39m: Tasks count = 50
+
+2019-03-18T12:35:49.041Z - [32minfo[39m: Importing 13 of 63 - [(meta_description) Meta Description] with tsk = 1552912548463
+2019-03-18T12:35:49.041Z - [32minfo[39m: Tasks count = 49
+
+2019-03-18T12:35:49.041Z - [32minfo[39m: Importing 14 of 63 - [(image) Base] with tsk = 1552912548463
+2019-03-18T12:35:49.041Z - [32minfo[39m: Tasks count = 48
+
+2019-03-18T12:35:49.041Z - [32minfo[39m: Importing 15 of 63 - [(small_image) Small] with tsk = 1552912548463
+2019-03-18T12:35:49.041Z - [32minfo[39m: Tasks count = 47
+
+2019-03-18T12:35:49.041Z - [32minfo[39m: Importing 16 of 63 - [(thumbnail) Thumbnail] with tsk = 1552912548463
+2019-03-18T12:35:49.041Z - [32minfo[39m: Tasks count = 46
+
+2019-03-18T12:35:49.041Z - [32minfo[39m: Importing 17 of 63 - [(media_gallery) Media Gallery] with tsk = 1552912548463
+
+2019-03-18T12:35:49.042Z - [32minfo[39m: Tasks count = 45
+
+2019-03-18T12:35:49.042Z - [32minfo[39m: Importing 18 of 63 - [(old_id) undefined] with tsk = 1552912548463
+
+2019-03-18T12:35:49.042Z - [32minfo[39m: Tasks count = 44
+
+2019-03-18T12:35:49.042Z - [32minfo[39m: Importing 19 of 63 - [(tier_price) Tier Price] with tsk = 1552912548463
+2019-03-18T12:35:49.042Z - [32minfo[39m: Tasks count = 43
+
+2019-03-18T12:35:49.042Z - [32minfo[39m: Importing 20 of 63 - [(color) Color] with tsk = 1552912548463
+
+2019-03-18T12:35:49.042Z - [32minfo[39m: Tasks count = 42
+
+2019-03-18T12:35:49.042Z - [32minfo[39m: Importing 21 of 63 - [(news_from_date) Set Product as New from Date] with tsk = 1552912548463
+
+2019-03-18T12:35:49.042Z - [32minfo[39m: Tasks count = 41
+
+2019-03-18T12:35:49.042Z - [32minfo[39m: Importing 22 of 63 - [(news_to_date) Set Product as New to Date] with tsk = 1552912548463
+
+2019-03-18T12:35:49.042Z - [32minfo[39m: Tasks count = 40
+
+2019-03-18T12:35:49.043Z - [32minfo[39m: Importing 23 of 63 - [(gallery) Image Gallery] with tsk = 1552912548463
+
+2019-03-18T12:35:49.043Z - [32minfo[39m: Tasks count = 39
+
+2019-03-18T12:35:49.043Z - [32minfo[39m: Importing 24 of 63 - [(status) Enable Product] with tsk = 1552912548463
+
+2019-03-18T12:35:49.043Z - [32minfo[39m: Tasks count = 38
+
+2019-03-18T12:35:49.043Z - [32minfo[39m: Importing 25 of 63 - [(minimal_price) Minimal Price] with tsk = 1552912548463
+
+2019-03-18T12:35:49.043Z - [32minfo[39m: Tasks count = 37
+
+2019-03-18T12:35:49.043Z - [32minfo[39m: Importing 26 of 63 - [(visibility) Visibility] with tsk = 1552912548463
+2019-03-18T12:35:49.043Z - [32minfo[39m: Tasks count = 36
+
+2019-03-18T12:35:49.043Z - [32minfo[39m: Importing 27 of 63 - [(custom_design) New Theme] with tsk = 1552912548463
+
+2019-03-18T12:35:49.043Z - [32minfo[39m: Tasks count = 35
+
+2019-03-18T12:35:49.043Z - [32minfo[39m: Importing 28 of 63 - [(custom_design_from) Active From] with tsk = 1552912548463
+2019-03-18T12:35:49.043Z - [32minfo[39m: Tasks count = 34
+
+2019-03-18T12:35:49.043Z - [32minfo[39m: Importing 29 of 63 - [(custom_design_to) Active To] with tsk = 1552912548463
+2019-03-18T12:35:49.044Z - [32minfo[39m: Tasks count = 33
+
+2019-03-18T12:35:49.044Z - [32minfo[39m: Importing 30 of 63 - [(custom_layout_update) Layout Update XML] with tsk = 1552912548463
+2019-03-18T12:35:49.044Z - [32minfo[39m: Tasks count = 32
+
+2019-03-18T12:35:49.044Z - [32minfo[39m: Importing 31 of 63 - [(page_layout) Layout] with tsk = 1552912548463
+2019-03-18T12:35:49.044Z - [32minfo[39m: Tasks count = 31
+
+2019-03-18T12:35:49.044Z - [32minfo[39m: Importing 32 of 63 - [(category_ids) Categories] with tsk = 1552912548463
+2019-03-18T12:35:49.044Z - [32minfo[39m: Tasks count = 30
+
+2019-03-18T12:35:49.044Z - [32minfo[39m: Importing 33 of 63 - [(options_container) Display Product Options In] with tsk = 1552912548463
+2019-03-18T12:35:49.044Z - [32minfo[39m: Tasks count = 29
+
+2019-03-18T12:35:49.044Z - [32minfo[39m: Importing 34 of 63 - [(required_options) undefined] with tsk = 1552912548463
+2019-03-18T12:35:49.044Z - [32minfo[39m: Tasks count = 28
+
+2019-03-18T12:35:49.044Z - [32minfo[39m: Importing 35 of 63 - [(has_options) undefined] with tsk = 1552912548463
+
+2019-03-18T12:35:49.044Z - [32minfo[39m: Tasks count = 27
+
+2019-03-18T12:35:49.045Z - [32minfo[39m: Importing 36 of 63 - [(image_label) Image Label] with tsk = 1552912548463
+
+2019-03-18T12:35:49.045Z - [32minfo[39m: Tasks count = 26
+
+2019-03-18T12:35:49.045Z - [32minfo[39m: Importing 37 of 63 - [(small_image_label) Small Image Label] with tsk = 1552912548463
+2019-03-18T12:35:49.045Z - [32minfo[39m: Tasks count = 25
+
+2019-03-18T12:35:49.045Z - [32minfo[39m: Importing 38 of 63 - [(thumbnail_label) Thumbnail Label] with tsk = 1552912548463
+2019-03-18T12:35:49.045Z - [32minfo[39m: Tasks count = 24
+
+2019-03-18T12:35:49.045Z - [32minfo[39m: Importing 39 of 63 - [(created_at) undefined] with tsk = 1552912548463
+2019-03-18T12:35:49.045Z - [32minfo[39m: Tasks count = 23
+
+2019-03-18T12:35:49.045Z - [32minfo[39m: Importing 40 of 63 - [(updated_at) undefined] with tsk = 1552912548463
+
+2019-03-18T12:35:49.045Z - [32minfo[39m: Tasks count = 22
+
+2019-03-18T12:35:49.045Z - [32minfo[39m: Importing 41 of 63 - [(country_of_manufacture) Country of Manufacture] with tsk = 1552912548463
+
+2019-03-18T12:35:49.045Z - [32minfo[39m: Tasks count = 21
+
+2019-03-18T12:35:49.046Z - [32minfo[39m: Importing 42 of 63 - [(quantity_and_stock_status) Quantity] with tsk = 1552912548463
+
+2019-03-18T12:35:49.046Z - [32minfo[39m: Tasks count = 20
+
+2019-03-18T12:35:49.046Z - [32minfo[39m: Importing 43 of 63 - [(custom_layout) New Layout] with tsk = 1552912548463
+
+2019-03-18T12:35:49.046Z - [32minfo[39m: Tasks count = 19
+
+2019-03-18T12:35:49.046Z - [32minfo[39m: Importing 44 of 63 - [(msrp) Manufacturer's Suggested Retail Price] with tsk = 1552912548463
+2019-03-18T12:35:49.046Z - [32minfo[39m: Tasks count = 18
+
+2019-03-18T12:35:49.046Z - [32minfo[39m: Importing 45 of 63 - [(msrp_display_actual_price_type) Display Actual Price] with tsk = 1552912548463
+
+2019-03-18T12:35:49.046Z - [32minfo[39m: Tasks count = 17
+
+2019-03-18T12:35:49.046Z - [32minfo[39m: Importing 46 of 63 - [(url_key) URL Key] with tsk = 1552912548463
+2019-03-18T12:35:49.046Z - [32minfo[39m: Tasks count = 16
+
+2019-03-18T12:35:49.046Z - [32minfo[39m: Importing 47 of 63 - [(url_path) undefined] with tsk = 1552912548463
+
+2019-03-18T12:35:49.046Z - [32minfo[39m: Tasks count = 15
+
+2019-03-18T12:35:49.047Z - [32minfo[39m: Importing 48 of 63 - [(links_purchased_separately) Links can be purchased separately] with tsk = 1552912548463
+
+2019-03-18T12:35:49.047Z - [32minfo[39m: Tasks count = 14
+
+2019-03-18T12:35:49.047Z - [32minfo[39m: Importing 49 of 63 - [(samples_title) Samples title] with tsk = 1552912548463
+
+2019-03-18T12:35:49.047Z - [32minfo[39m: Tasks count = 13
+
+2019-03-18T12:35:49.047Z - [32minfo[39m: Importing 50 of 63 - [(links_title) Links title] with tsk = 1552912548463
+
+2019-03-18T12:35:49.047Z - [32minfo[39m: Tasks count = 12
+
+2019-03-18T12:35:49.047Z - [32minfo[39m: Importing 51 of 63 - [(links_exist) undefined] with tsk = 1552912548463
+
+2019-03-18T12:35:49.047Z - [32minfo[39m: Tasks count = 11
+
+2019-03-18T12:35:49.047Z - [32minfo[39m: Importing 52 of 63 - [(gift_message_available) Allow Gift Message] with tsk = 1552912548463
+
+2019-03-18T12:35:49.047Z - [32minfo[39m: Tasks count = 10
+
+2019-03-18T12:35:49.047Z - [32minfo[39m: Importing 53 of 63 - [(swatch_image) Swatch] with tsk = 1552912548463
+
+2019-03-18T12:35:49.047Z - [32minfo[39m: Tasks count = 9
+
+2019-03-18T12:35:49.047Z - [32minfo[39m: Importing 54 of 63 - [(tax_class_id) Tax Class] with tsk = 1552912548463
+2019-03-18T12:35:49.048Z - [32minfo[39m: Tasks count = 8
+
+2019-03-18T12:35:49.048Z - [32minfo[39m: Importing 55 of 63 - [(price_type) Dynamic Price] with tsk = 1552912548463
+2019-03-18T12:35:49.048Z - [32minfo[39m: Tasks count = 7
+
+2019-03-18T12:35:49.048Z - [32minfo[39m: Importing 56 of 63 - [(sku_type) Dynamic SKU] with tsk = 1552912548463
+2019-03-18T12:35:49.048Z - [32minfo[39m: Tasks count = 6
+
+2019-03-18T12:35:49.048Z - [32minfo[39m: Importing 57 of 63 - [(weight_type) Dynamic Weight] with tsk = 1552912548463
+
+2019-03-18T12:35:49.048Z - [32minfo[39m: Tasks count = 5
+
+2019-03-18T12:35:49.048Z - [32minfo[39m: Importing 58 of 63 - [(price_view) Price View] with tsk = 1552912548463
+2019-03-18T12:35:49.048Z - [32minfo[39m: Tasks count = 4
+
+2019-03-18T12:35:49.048Z - [32minfo[39m: Importing 59 of 63 - [(shipment_type) Ship Bundle Items] with tsk = 1552912548463
+2019-03-18T12:35:49.048Z - [32minfo[39m: Tasks count = 3
+
+2019-03-18T12:35:49.048Z - [32minfo[39m: Importing 60 of 63 - [(ts_dimensions_length) Length] with tsk = 1552912548463
+
+2019-03-18T12:35:49.048Z - [32minfo[39m: Tasks count = 2
+
+2019-03-18T12:35:49.049Z - [32minfo[39m: Importing 61 of 63 - [(ts_dimensions_width) Width] with tsk = 1552912548463
+
+2019-03-18T12:35:49.049Z - [32minfo[39m: Tasks count = 1
+
+2019-03-18T12:35:49.049Z - [32minfo[39m: Importing 62 of 63 - [(ts_dimensions_height) Height] with tsk = 1552912548463
+
+2019-03-18T12:35:49.049Z - [32minfo[39m: Tasks count = 0
+
+2019-03-18T12:35:49.049Z - [32minfo[39m: No tasks to process. All records processed!
+
+2019-03-18T12:35:49.049Z - [32minfo[39m: Cleaning up with tsk = 1552912548463
+
+2019-03-18T12:35:49.050Z - [32minfo[39m: Task done! Exiting in 30s...
+
+2019-03-18T12:35:49.330Z - [32minfo[39m:  
+{ took: [33m4[39m,
+  timed_out: [33mfalse[39m,
+  total: [33m0[39m,
+  deleted: [33m0[39m,
+  batches: [33m0[39m,
+  version_conflicts: [33m0[39m,
+  noops: [33m0[39m,
+  retries: { bulk: [33m0[39m, search: [33m0[39m },
+  throttled_millis: [33m0[39m,
+  requests_per_second: [33m-1[39m,
+  throttled_until_millis: [33m0[39m,
+  failures: [] }
+
+ == TAXRULE IMPORTER ==
+2019-03-18T12:35:51.286Z - [34mdebug[39m: Elasticsearch module initialized!
+
+[32minfo[39m: Winston logging library initialized.
+
+2019-03-18T12:35:51.430Z - [32minfo[39m: Connected correctly to server
+
+2019-03-18T12:35:51.430Z - [32minfo[39m: TRANSACTION KEY = 1552912551412
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/taxRules/search?searchCriteria=undefined
+
+[34mdebug[39m: Response received.
+
+2019-03-18T12:35:51.702Z - [33mwarn[39m: No records to process!
+
+2019-03-18T12:35:51.702Z - [32minfo[39m: Cleaning up with tsk = 1552912551412
+
+2019-03-18T12:35:51.705Z - [32minfo[39m: Task done! Exiting in 30s...
+
+2019-03-18T12:35:51.716Z - [32minfo[39m:  
+{ took: [33m2[39m,
+  timed_out: [33mfalse[39m,
+  total: [33m0[39m,
+  deleted: [33m0[39m,
+  batches: [33m0[39m,
+  version_conflicts: [33m0[39m,
+  noops: [33m0[39m,
+  retries: { bulk: [33m0[39m, search: [33m0[39m },
+  throttled_millis: [33m0[39m,
+  requests_per_second: [33m-1[39m,
+  throttled_until_millis: [33m0[39m,
+  failures: [] }
+
+ == PRODUCTS IMPORTER ==
+2019-03-18T12:35:54.010Z - [34mdebug[39m: Elasticsearch module initialized!
+
+[32minfo[39m: Winston logging library initialized.
+
+2019-03-18T12:35:54.042Z - [32minfo[39m: Running in SPM (Single Process Mode)
+
+2019-03-18T12:35:54.068Z - [32minfo[39m: Connected correctly to server
+
+2019-03-18T12:35:54.068Z - [32minfo[39m: TRANSACTION KEY = 1552912554042
+
+2019-03-18T12:35:54.069Z - [32minfo[39m: Configurable parent sync is  false
+
+2019-03-18T12:35:54.069Z - [34mdebug[39m: &searchCriteria[currentPage]=1&searchCriteria[pageSize]=50
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/products?searchCriteria=&searchCriteria[currentPage]=1&searchCriteria[pageSize]=50
+
+[34mdebug[39m: Response received.
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/products-render-info?searchCriteria=&searchCriteria[filter_groups][0][filters][0][field]=sku&searchCriteria[filter_groups][0][filters][0][value]=Coca-Cola%2CBoost-Energy-Drink%2CRed%20Bull&searchCriteria[filter_groups][0][filters][0][condition_type]=in&storeId=1&currencyCode=USD
+
+[34mdebug[39m: Response received.
+
+2019-03-18T12:35:55.304Z - [32minfo[39m: Page count 0
+
+2019-03-18T12:35:55.304Z - [32minfo[39m: Total count is: 3
+
+2019-03-18T12:35:55.306Z - [32minfo[39m: Product sub-stage 1: Getting stock items for Coca-Cola
+
+2019-03-18T12:35:55.306Z - [32minfo[39m: Product sub-stage 2: Getting media gallery Coca-Cola
+2019-03-18T12:35:55.306Z - [32minfo[39m: Product sub-stage 3: Getting product custom options Coca-Cola
+2019-03-18T12:35:55.307Z - [32minfo[39m: Product sub-stage 5: Geting product links Coca-Cola
+
+2019-03-18T12:35:55.307Z - [32minfo[39m: Product sub-stage 1: Getting stock items for Boost-Energy-Drink
+
+2019-03-18T12:35:55.307Z - [32minfo[39m: Product sub-stage 2: Getting media gallery Boost-Energy-Drink
+2019-03-18T12:35:55.307Z - [32minfo[39m: Product sub-stage 3: Getting product custom options Boost-Energy-Drink
+2019-03-18T12:35:55.307Z - [32minfo[39m: Product sub-stage 5: Geting product links Boost-Energy-Drink
+
+2019-03-18T12:35:55.307Z - [32minfo[39m: Product sub-stage 1: Getting stock items for Red Bull
+2019-03-18T12:35:55.307Z - [32minfo[39m: Product sub-stage 2: Getting media gallery Red Bull
+
+2019-03-18T12:35:55.307Z - [32minfo[39m: Product sub-stage 3: Getting product custom options Red Bull
+2019-03-18T12:35:55.307Z - [32minfo[39m: Product sub-stage 5: Geting product links Red Bull
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/stockItems/Coca-Cola
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/stockItems/Boost-Energy-Drink
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/stockItems/Red%20Bull
+
+[34mdebug[39m: Response received.
+
+2019-03-18T12:35:55.581Z - [34mdebug[39m: Storing stock data to cache under: vue_storefront_catalog_stock_4
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/products/Red%20Bull/media
+
+[34mdebug[39m: Response received.
+
+2019-03-18T12:35:55.583Z - [34mdebug[39m: Storing stock data to cache under: vue_storefront_catalog_stock_3
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/products/Boost-Energy-Drink/media
+
+[34mdebug[39m: Response received.
+
+2019-03-18T12:35:55.584Z - [34mdebug[39m: Storing stock data to cache under: vue_storefront_catalog_stock_1
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/products/Coca-Cola/media
+
+[34mdebug[39m: Response received.
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/products/Coca-Cola/options
+
+[34mdebug[39m: Response received.
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/products/Red%20Bull/options
+
+[34mdebug[39m: Response received.
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/products/Boost-Energy-Drink/options
+
+[34mdebug[39m: Response received.
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/products/links/types
+
+[34mdebug[39m: Response received.
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/products/links/types
+
+[34mdebug[39m: Response received.
+
+[34mdebug[39m: Calling API endpoint: GET http://vuesto-5278.bolt54.servebolt.com/magento2/rest//V1/products/links/types
+
+[34mdebug[39m: Response received.
+
+2019-03-18T12:35:56.693Z - [32minfo[39m: Product sub-stage 6: Geting product categories for Red Bull
+
+2019-03-18T12:35:56.693Z - [32minfo[39m: Using category_ids binding for Red Bull: 3
+
+[34mdebug[39m: Response received.
+
+2019-03-18T12:35:56.694Z - [32minfo[39m: Product sub-stage 6: Geting product categories for Boost-Energy-Drink
+
+2019-03-18T12:35:56.694Z - [32minfo[39m: Using category_ids binding for Boost-Energy-Drink: 3
+
+[34mdebug[39m: Response received.
+
+2019-03-18T12:35:56.695Z - [32minfo[39m: Product sub-stage 6: Geting product categories for Coca-Cola
+2019-03-18T12:35:56.695Z - [32minfo[39m: Using category_ids binding for Coca-Cola: 3
+
+2019-03-18T12:35:56.696Z - [32minfo[39m: Product sub-stages done for Red Bull
+
+2019-03-18T12:35:56.696Z - [32minfo[39m: Product sub-stages done for Boost-Energy-Drink
+
+2019-03-18T12:35:56.696Z - [32minfo[39m: Importing 0 of 3 - [(4 - Red Bull) Red Bull] with tsk = 1552912554042
+
+2019-03-18T12:35:56.697Z - [32minfo[39m: Tasks count = 2
+
+2019-03-18T12:35:56.700Z - [32minfo[39m: Importing 1 of 3 - [(3 - Boost-Energy-Drink) Boost Energy Drink] with tsk = 1552912554042
+
+2019-03-18T12:35:56.700Z - [32minfo[39m: Tasks count = 1
+
+2019-03-18T12:35:56.703Z - [32minfo[39m: Product sub-stages done for Coca-Cola
+
+2019-03-18T12:35:56.704Z - [32minfo[39m: Importing 2 of 3 - [(1 - Coca-Cola) Coca Cola] with tsk = 1552912554042
+2019-03-18T12:35:56.704Z - [32minfo[39m: Tasks count = 0
+
+2019-03-18T12:35:56.704Z - [34mdebug[39m: --L:0 Level done! Current page: 1 of 0
+
+2019-03-18T12:35:56.704Z - [32minfo[39m: All pages processed!
+
+2019-03-18T12:35:56.704Z - [32minfo[39m: Cleaning up with tsk = 1552912554042
+
+2019-03-18T12:35:56.705Z - [32minfo[39m: Task done! Exiting in 30s...
+
+2019-03-18T12:35:56.722Z - [32minfo[39m:  
+{ took: [33m8[39m,
+  timed_out: [33mfalse[39m,
+  total: [33m0[39m,
+  deleted: [33m0[39m,
+  batches: [33m0[39m,
+  version_conflicts: [33m0[39m,
+  noops: [33m0[39m,
+  retries: { bulk: [33m0[39m, search: [33m0[39m },
+  throttled_millis: [33m0[39m,
+  requests_per_second: [33m-1[39m,
+  throttled_until_millis: [33m0[39m,
+  failures: [] }
+
+ == REINDEXING DATABASE ==
+Elasticsearch INFO: 2019-03-18T12:35:58Z
+  Adding connection to http://localhost:9200/
+
+
+** Hello! I am going to rebuild EXISTING ES index to fix the schema
+
+** Creating temporary index vue_storefront_catalog_1552912559
+
+Elasticsearch DEBUG: 2019-03-18T12:35:58Z
+  starting request {
+    "method": "DELETE",
+    "path": "/*/_alias/vue_storefront_catalog_1552912559",
+    "query": {}
+  }
+  
+
+
+Elasticsearch DEBUG: 2019-03-18T12:35:58Z
+  Request complete
+
+
+Public index alias does not exists [aliases_not_found_exception] aliases [vue_storefront_catalog_1552912559] missing, with { resource.type="aliases" & resource.id="vue_storefront_catalog_1552912559" }
+
+Elasticsearch DEBUG: 2019-03-18T12:35:58Z
+  starting request {
+    "method": "DELETE",
+    "path": "/vue_storefront_catalog_1552912559",
+    "query": {}
+  }
+  
+
+
+Elasticsearch DEBUG: 2019-03-18T12:35:58Z
+  Request complete
+
+
+Elasticsearch DEBUG: 2019-03-18T12:35:58Z
+  starting request {
+    "method": "PUT",
+    "path": "/vue_storefront_catalog_1552912559",
+    "body": {
+      "settings": {
+        "analysis": {
+          "tokenizer": {
+            "comma": {
+              "type": "pattern",
+              "pattern": ","
+            }
+          },
+          "analyzer": {
+            "comma": {
+              "type": "custom",
+              "tokenizer": "comma"
+            }
+          }
+        }
+      }
+    },
+    "query": {}
+  }
+  
+
+
+Elasticsearch DEBUG: 2019-03-18T12:35:59Z
+  Request complete
+
+
+{ acknowledged: [33mtrue[39m,
+  shards_acknowledged: [33mtrue[39m,
+  index: [32m'vue_storefront_catalog_1552912559'[39m }
+
+** Putting the mappings on top of vue_storefront_catalog_1552912559
+
+Elasticsearch DEBUG: 2019-03-18T12:35:59Z
+  starting request {
+    "method": "PUT",
+    "path": "/vue_storefront_catalog_1552912559/_mapping/product",
+    "body": {
+      "properties": {
+        "sku": {
+          "type": "keyword"
+        },
+        "url_key": {
+          "type": "keyword"
+        },
+        "url_path": {
+          "type": "keyword"
+        },
+        "slug": {
+          "type": "keyword"
+        },
+        "size": {
+          "type": "integer"
+        },
+        "size_options": {
+          "type": "integer"
+        },
+        "price": {
+          "type": "float"
+        },
+        "has_options": {
+          "type": "integer"
+        },
+        "special_price": {
+          "type": "float"
+        },
+        "color": {
+          "type": "integer"
+        },
+        "color_options": {
+          "type": "integer"
+        },
+        "pattern": {
+          "type": "text"
+        },
+        "id": {
+          "type": "long"
+        },
+        "status": {
+          "type": "integer"
+        },
+        "weight": {
+          "type": "integer"
+        },
+        "visibility": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+        },
+        "updated_at": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+        },
+        "special_from_date": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+        },
+        "special_to_date": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+        },
+        "news_from_date": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+        },
+        "news_to_date": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+        },
+        "description": {
+          "type": "text"
+        },
+        "name": {
+          "type": "text"
+        },
+        "configurable_children": {
+          "properties": {
+            "url_key": {
+              "type": "keyword"
+            },
+            "sku": {
+              "type": "keyword"
+            },
+            "has_options": {
+              "type": "boolean"
+            },
+            "price": {
+              "type": "float"
+            },
+            "special_price": {
+              "type": "float"
+            }
+          }
+        },
+        "configurable_options": {
+          "properties": {
+            "attribute_id": {
+              "type": "long"
+            },
+            "default_label": {
+              "type": "text"
+            },
+            "label": {
+              "type": "text"
+            },
+            "frontend_label": {
+              "type": "text"
+            },
+            "store_label": {
+              "type": "text"
+            },
+            "values": {
+              "properties": {
+                "default_label": {
+                  "type": "text"
+                },
+                "label": {
+                  "type": "text"
+                },
+                "frontend_label": {
+                  "type": "text"
+                },
+                "store_label": {
+                  "type": "text"
+                },
+                "value_index": {
+                  "type": "keyword"
+                }
+              }
+            }
+          }
+        },
+        "category_ids": {
+          "type": "long"
+        },
+        "eco_collection": {
+          "type": "integer"
+        },
+        "eco_collection_options": {
+          "type": "integer"
+        },
+        "erin_recommends": {
+          "type": "integer"
+        },
+        "tax_class_id": {
+          "type": "integer"
+        },
+        "position": {
+          "type": "integer"
+        },
+        "required_options": {
+          "type": "integer"
+        },
+        "Size_options": {
+          "type": "keyword"
+        },
+        "Color_options": {
+          "type": "keyword"
+        }
+      }
+    },
+    "query": {}
+  }
+  
+
+
+Elasticsearch DEBUG: 2019-03-18T12:35:59Z
+  Request complete
+
+
+{ acknowledged: [33mtrue[39m }
+
+Elasticsearch DEBUG: 2019-03-18T12:35:59Z
+  starting request {
+    "method": "PUT",
+    "path": "/vue_storefront_catalog_1552912559/_mapping/taxrule",
+    "body": {
+      "properties": {
+        "id": {
+          "type": "long"
+        },
+        "rates": {
+          "properties": {
+            "rate": {
+              "type": "float"
+            }
+          }
+        }
+      }
+    },
+    "query": {}
+  }
+  
+
+
+Elasticsearch DEBUG: 2019-03-18T12:35:59Z
+  Request complete
+
+
+{ acknowledged: [33mtrue[39m }
+
+Elasticsearch DEBUG: 2019-03-18T12:35:59Z
+  starting request {
+    "method": "PUT",
+    "path": "/vue_storefront_catalog_1552912559/_mapping/attribute",
+    "body": {
+      "properties": {
+        "id": {
+          "type": "long"
+        },
+        "attribute_id": {
+          "type": "long"
+        },
+        "options": {
+          "properties": {
+            "value": {
+              "type": "text",
+              "index": "not_analyzed"
+            }
+          }
+        }
+      }
+    },
+    "query": {}
+  }
+  
+
+
+Elasticsearch DEBUG: 2019-03-18T12:35:59Z
+  Request complete
+
+
+{ acknowledged: [33mtrue[39m }
+
+Elasticsearch DEBUG: 2019-03-18T12:35:59Z
+  starting request {
+    "method": "PUT",
+    "path": "/vue_storefront_catalog_1552912559/_mapping/cms_page",
+    "body": {
+      "properties": {
+        "id": {
+          "type": "long"
+        },
+        "identifier": {
+          "type": "keyword"
+        },
+        "creation_time": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+        },
+        "update_time": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+        }
+      }
+    },
+    "query": {}
+  }
+  
+
+
+Elasticsearch DEBUG: 2019-03-18T12:35:59Z
+  Request complete
+
+
+{ acknowledged: [33mtrue[39m }
+
+Elasticsearch DEBUG: 2019-03-18T12:35:59Z
+  starting request {
+    "method": "PUT",
+    "path": "/vue_storefront_catalog_1552912559/_mapping/cms_block",
+    "body": {
+      "properties": {
+        "id": {
+          "type": "long"
+        },
+        "identifier": {
+          "type": "keyword"
+        },
+        "creation_time": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+        },
+        "update_time": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+        }
+      }
+    },
+    "query": {}
+  }
+  
+
+
+Elasticsearch DEBUG: 2019-03-18T12:35:59Z
+  Request complete
+
+
+{ acknowledged: [33mtrue[39m }
+
+Elasticsearch DEBUG: 2019-03-18T12:35:59Z
+  starting request {
+    "method": "PUT",
+    "path": "/vue_storefront_catalog_1552912559/_mapping/category",
+    "body": {
+      "properties": {
+        "url_key": {
+          "type": "keyword"
+        },
+        "url_path": {
+          "type": "keyword"
+        },
+        "slug": {
+          "type": "keyword"
+        },
+        "is_active": {
+          "type": "boolean"
+        },
+        "product_count": {
+          "type": "integer"
+        },
+        "parent_id": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+        },
+        "updated_at": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+        }
+      }
+    },
+    "query": {}
+  }
+  
+
+
+Elasticsearch DEBUG: 2019-03-18T12:35:59Z
+  Request complete
+
+
+{ acknowledged: [33mtrue[39m }
+
+** We will reindex vue_storefront_catalog with the current schema
+
+Elasticsearch DEBUG: 2019-03-18T12:35:59Z
+  starting request {
+    "method": "POST",
+    "path": "/_reindex",
+    "body": {
+      "source": {
+        "index": "vue_storefront_catalog"
+      },
+      "dest": {
+        "index": "vue_storefront_catalog_1552912559"
+      }
+    },
+    "query": {}
+  }
+  
+
+
+Elasticsearch DEBUG: 2019-03-18T12:35:59Z
+  Request complete
+
+
+{ took: [33m166[39m,
+  timed_out: [33mfalse[39m,
+  total: [33m68[39m,
+  updated: [33m0[39m,
+  created: [33m68[39m,
+  deleted: [33m0[39m,
+  batches: [33m1[39m,
+  version_conflicts: [33m0[39m,
+  noops: [33m0[39m,
+  retries: { bulk: [33m0[39m, search: [33m0[39m },
+  throttled_millis: [33m0[39m,
+  requests_per_second: [33m-1[39m,
+  throttled_until_millis: [33m0[39m,
+  failures: [] }
+
+** Removing the original index
+
+Elasticsearch DEBUG: 2019-03-18T12:35:59Z
+  starting request {
+    "method": "DELETE",
+    "path": "/vue_storefront_catalog",
+    "query": {}
+  }
+  
+
+
+Elasticsearch DEBUG: 2019-03-18T12:35:59Z
+  Request complete
+
+
+{ acknowledged: [33mtrue[39m }
+
+** Creating alias
+
+Elasticsearch DEBUG: 2019-03-18T12:35:59Z
+  starting request {
+    "method": "DELETE",
+    "path": "/vue_storefront_catalog/_alias/vue_storefront_catalog_1552912559",
+    "query": {}
+  }
+  
+
+
+Elasticsearch DEBUG: 2019-03-18T12:35:59Z
+  Request complete
+
+
+Public index alias does not exists [index_not_found_exception] no such index, with { resource.type="index_or_alias" & resource.id="vue_storefront_catalog" & index_uuid="_na_" & index="vue_storefront_catalog" }
+
+Elasticsearch DEBUG: 2019-03-18T12:35:59Z
+  starting request {
+    "method": "PUT",
+    "path": "/vue_storefront_catalog_1552912559/_alias/vue_storefront_catalog",
+    "query": {}
+  }
+  
+
+
+Elasticsearch DEBUG: 2019-03-18T12:35:59Z
+  Request complete
+
+
+Index alias created { acknowledged: true }
+
+Done! Bye!
+
+Done! Bye Bye!

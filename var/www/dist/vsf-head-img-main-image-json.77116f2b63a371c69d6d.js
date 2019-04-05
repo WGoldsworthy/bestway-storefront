@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[21],{570:function(e){e.exports={image:{title:"Welcome to Bestway!",subtitle:"The largest independent wholesale cash & carry operator in the UK.",image:"/assets/main_banner.jpg",link:"/c/women-20"}}}}]);

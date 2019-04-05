@@ -1,0 +1,81 @@
+.ripple {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    left: 50%;
+    top: 50%;
+    width: 120px;
+    height: 120px;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+    opacity: .2;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  &:not(:active):after {
+    animation: ripple-effect 1s ease-out;
+  }
+  &::after {
+    visibility: hidden;
+  }
+  &:focus {
+    &::after {
+      visibility: visible;
+    }
+  }
+  &-dark {
+    &::after {
+      background-color: #ddd;
+    }
+  }
+}
+
+.button-disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+button,
+.button {
+  outline: none;
+  cursor: pointer;
+  margin: 0;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sagePay {
+  width: 100px;
+  height: 50px;
+}
+
+.sagePay img {
+  height: 100%
+}
+
+.loginButton {
+  padding: 10px;
+  width: 80%;
+  background: white;
+  border: 1px solid rgb(0,154,217);
+  border-radius: 5px;
+  color: rgb(0,154,217);
+  transition: 0.5s ease-out;
+  margin-top: 10px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  transition: 0.3s ease-out;
+  font-size: 12px;
+}
+
+.loginButton:hover {
+  background: rgb(0,154,217);
+  transition: 0.3s ease-out;
+  color: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.1);
+}

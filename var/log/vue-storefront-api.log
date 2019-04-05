@@ -1,0 +1,125 @@
+npm WARN lifecycle The node binary used for scripts is /var/folders/t4/7dqgpzps2316wmbqlcrqlqcw0000gp/T/yarn--1552912432383-0.61186707858216/node but npm is using /usr/local/Cellar/node/11.11.0/bin/node itself. Use the `--scripts-prepend-node-path` option to include the path for the node binary npm was executed with.
+
+> vue-storefront-api@0.1.0 dev /Users/wgoldsworthy/Documents/Code/vue-storefront-api
+> nodemon -w src --exec "babel-node src --presets env,stage-0"
+
+[33m[nodemon] 1.18.10[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching: /Users/wgoldsworthy/Documents/Code/vue-storefront-api/src/**/*[39m
+[32m[nodemon] starting `babel-node src --presets env,stage-0`[39m
+Extension mailchimp-subscribe registered under /ext/mailchimp-subscribe base URL
+[32minfo[39m: Winston logging library initialized.
+Extension example-magento-api registered under /ext/example-magento-api base URL
+Extension cms-data registered under /ext/cms-data base URL
+Extension mail-service registered under /ext/mail-service base URL
+Vue Storefront API started at http://localhost:8080
+{ query: { bool: { filter: [Object] } } }
+No additional data adapter for category
+Entering HmacProcessor::process
+[0mGET /api/catalog/vue_storefront_catalog/category/_search?size=4000&from=0&sort=position%3Aasc&_source_exclude=sgn&_source_include=id%2C*.children_data.id%2C*.id%2Cchildren_count%2Csku%2Cname%2Cis_active%2Cparent_id%2Clevel%2Curl_key%2Cproduct_count%2Cpath&request=%7B%22query%22%3A%7B%22bool%22%3A%7B%22filter%22%3A%7B%22terms%22%3A%7B%22is_active%22%3A%5Btrue%5D%7D%7D%7D%7D%7D [32m200 [0m74.379 ms - 682[0m
+{ query: { bool: { filter: [Object] } } }
+Entering ProductProcessor::process
+Taxes will be calculated for PL  false
+Elasticsearch INFO: 2019-03-18T14:01:13Z
+  Adding connection to http://localhost:9200/
+
+Elasticsearch DEBUG: 2019-03-18T14:01:13Z
+  starting request {
+    "method": "POST",
+    "path": "/vue_storefront_catalog/taxrule/_search",
+    "body": {},
+    "query": {}
+  }
+  
+
+Elasticsearch DEBUG: 2019-03-18T14:01:13Z
+  Request complete
+
+No such tax class id: 2
+No such tax class id: 2 or rate not found for PL / 
+[0mGET /api/catalog/vue_storefront_catalog/product/_search?size=50&from=0&sort=&_source_exclude=*.msrp_display_actual_price_type%2Crequired_options%2Cupdated_at%2Ccreated_at%2Cattribute_set_id%2Coptions_container%2Cmsrp_display_actual_price_type%2Chas_options%2Cstock.manage_stock%2Cstock.use_config_min_qty%2Cstock.use_config_notify_stock_qty%2Cstock.stock_id%2Cstock.use_config_backorders%2Cstock.use_config_enable_qty_inc%2Cstock.enable_qty_increments%2Cstock.use_config_manage_stock%2Cstock.use_config_min_sale_qty%2Cstock.notify_stock_qty%2Cstock.use_config_max_sale_qty%2Cstock.use_config_max_sale_qty%2Cstock.qty_increments%2Csmall_image%2Csgn%2C*.sgn&request=%7B%22query%22%3A%7B%22bool%22%3A%7B%22filter%22%3A%7B%22terms%22%3A%7B%22sku%22%3A%5B%22Coca-Cola%22%5D%7D%7D%7D%7D%7D [32m200 [0m319.061 ms - 1271[0m
+{ query: { bool: { filter: [Object] } } }
+{ query: { bool: { filter: [Object] } } }
+{ query: { bool: { filter: [Object] } } }
+No additional data adapter for attribute
+Entering HmacProcessor::process
+[0mGET /api/catalog/vue_storefront_catalog/attribute/_search?size=50&from=0&sort=&_source_include=attribute_code%2Cid%2Centity_type_id%2Coptions%2Cdefault_value%2Cis_user_defined%2Cfrontend_label%2Cattribute_id%2Cdefault_frontend_label%2Cis_visible_on_front%2Cis_visible%2Cis_comparable%2Ctier_prices%2Cfrontend_input&request=%7B%22query%22%3A%7B%22bool%22%3A%7B%22filter%22%3A%7B%22bool%22%3A%7B%22must%22%3A%5B%7B%22terms%22%3A%7B%22attribute_code%22%3A%5B%22meta_title%22%2C%22extension_attributes%22%2C%22meta_description%22%2C%22meta_keyword%22%5D%7D%7D%2C%7B%22terms%22%3A%7B%22is_user_defined%22%3A%5Btrue%5D%7D%7D%2C%7B%22terms%22%3A%7B%22is_visible%22%3A%5Btrue%5D%7D%7D%5D%7D%7D%7D%7D%7D [32m200 [0m11.004 ms - 134[0m
+Entering ProductProcessor::process
+Taxes will be calculated for PL  false
+Elasticsearch INFO: 2019-03-18T14:01:13Z
+  Adding connection to http://localhost:9200/
+
+Elasticsearch DEBUG: 2019-03-18T14:01:13Z
+  starting request {
+    "method": "POST",
+    "path": "/vue_storefront_catalog/taxrule/_search",
+    "body": {},
+    "query": {}
+  }
+  
+
+No additional data adapter for category
+Entering HmacProcessor::process
+[0mGET /api/catalog/vue_storefront_catalog/category/_search?size=4000&from=0&sort=position%3Aasc&_source_exclude=sgn&_source_include=id%2C*.children_data.id%2C*.id%2Cchildren_count%2Csku%2Cname%2Cis_active%2Cparent_id%2Clevel%2Curl_key%2Cproduct_count%2Cpath&request=%7B%22query%22%3A%7B%22bool%22%3A%7B%22filter%22%3A%7B%22terms%22%3A%7B%22is_active%22%3A%5Btrue%5D%7D%7D%7D%7D%7D [32m200 [0m14.815 ms - 682[0m
+Elasticsearch DEBUG: 2019-03-18T14:01:13Z
+  Request complete
+
+[0mGET /api/catalog/vue_storefront_catalog/product/_search?size=1&from=0&sort=&_source_exclude=*.msrp_display_actual_price_type%2Crequired_options%2Cupdated_at%2Ccreated_at%2Cattribute_set_id%2Coptions_container%2Cmsrp_display_actual_price_type%2Chas_options%2Cstock.manage_stock%2Cstock.use_config_min_qty%2Cstock.use_config_notify_stock_qty%2Cstock.stock_id%2Cstock.use_config_backorders%2Cstock.use_config_enable_qty_inc%2Cstock.enable_qty_increments%2Cstock.use_config_manage_stock%2Cstock.use_config_min_sale_qty%2Cstock.notify_stock_qty%2Cstock.use_config_max_sale_qty%2Cstock.use_config_max_sale_qty%2Cstock.qty_increments%2Csmall_image%2Csgn%2C*.sgn&request=%7B%22query%22%3A%7B%22bool%22%3A%7B%22filter%22%3A%7B%22terms%22%3A%7B%22configurable_children.sku%22%3A%5B%22Coca-Cola%22%5D%7D%7D%7D%7D%7D [32m200 [0m20.102 ms - 134[0m
+{ query: { bool: { filter: [Object] } } }
+Entering ProductProcessor::process
+Taxes will be calculated for PL  false
+Elasticsearch INFO: 2019-03-18T14:32:36Z
+  Adding connection to http://localhost:9200/
+
+Elasticsearch DEBUG: 2019-03-18T14:32:36Z
+  starting request {
+    "method": "POST",
+    "path": "/vue_storefront_catalog/taxrule/_search",
+    "body": {},
+    "query": {}
+  }
+  
+
+Elasticsearch DEBUG: 2019-03-18T14:32:36Z
+  Request complete
+
+No such tax class id: 2
+No such tax class id: 2 or rate not found for PL / 
+[0mGET /api/catalog/vue_storefront_catalog/product/_search?size=50&from=0&sort=&_source_exclude=*.msrp_display_actual_price_type%2Crequired_options%2Cupdated_at%2Ccreated_at%2Cattribute_set_id%2Coptions_container%2Cmsrp_display_actual_price_type%2Chas_options%2Cstock.manage_stock%2Cstock.use_config_min_qty%2Cstock.use_config_notify_stock_qty%2Cstock.stock_id%2Cstock.use_config_backorders%2Cstock.use_config_enable_qty_inc%2Cstock.enable_qty_increments%2Cstock.use_config_manage_stock%2Cstock.use_config_min_sale_qty%2Cstock.notify_stock_qty%2Cstock.use_config_max_sale_qty%2Cstock.use_config_max_sale_qty%2Cstock.qty_increments%2Csmall_image%2Csgn%2C*.sgn&request=%7B%22query%22%3A%7B%22bool%22%3A%7B%22filter%22%3A%7B%22terms%22%3A%7B%22sku%22%3A%5B%22Boost-Energy-Drink%22%5D%7D%7D%7D%7D%7D [32m200 [0m15.595 ms - 1747[0m
+{ query: { bool: { filter: [Object] } } }
+{ query: { bool: { filter: [Object] } } }
+{ query: { bool: { filter: [Object] } } }
+No additional data adapter for category
+Entering HmacProcessor::process
+[0mGET /api/catalog/vue_storefront_catalog/category/_search?size=4000&from=0&sort=position%3Aasc&_source_exclude=sgn&_source_include=id%2C*.children_data.id%2C*.id%2Cchildren_count%2Csku%2Cname%2Cis_active%2Cparent_id%2Clevel%2Curl_key%2Cproduct_count%2Cpath&request=%7B%22query%22%3A%7B%22bool%22%3A%7B%22filter%22%3A%7B%22terms%22%3A%7B%22is_active%22%3A%5Btrue%5D%7D%7D%7D%7D%7D [32m200 [0m9.881 ms - 682[0m
+Entering ProductProcessor::process
+Taxes will be calculated for PL  false
+Elasticsearch INFO: 2019-03-18T14:32:36Z
+  Adding connection to http://localhost:9200/
+
+Elasticsearch DEBUG: 2019-03-18T14:32:36Z
+  starting request {
+    "method": "POST",
+    "path": "/vue_storefront_catalog/taxrule/_search",
+    "body": {},
+    "query": {}
+  }
+  
+
+No additional data adapter for attribute
+Entering HmacProcessor::process
+[0mGET /api/catalog/vue_storefront_catalog/attribute/_search?size=50&from=0&sort=&_source_include=attribute_code%2Cid%2Centity_type_id%2Coptions%2Cdefault_value%2Cis_user_defined%2Cfrontend_label%2Cattribute_id%2Cdefault_frontend_label%2Cis_visible_on_front%2Cis_visible%2Cis_comparable%2Ctier_prices%2Cfrontend_input&request=%7B%22query%22%3A%7B%22bool%22%3A%7B%22filter%22%3A%7B%22bool%22%3A%7B%22must%22%3A%5B%7B%22terms%22%3A%7B%22attribute_code%22%3A%5B%22media_gallery_entries%22%2C%22meta_title%22%2C%22extension_attributes%22%2C%22meta_description%22%2C%22meta_keyword%22%2C%22swatch_image%22%5D%7D%7D%2C%7B%22terms%22%3A%7B%22is_user_defined%22%3A%5Btrue%5D%7D%7D%2C%7B%22terms%22%3A%7B%22is_visible%22%3A%5Btrue%5D%7D%7D%5D%7D%7D%7D%7D%7D [32m200 [0m12.083 ms - 134[0m
+Elasticsearch DEBUG: 2019-03-18T14:32:36Z
+  Request complete
+
+[0mGET /api/catalog/vue_storefront_catalog/product/_search?size=1&from=0&sort=&_source_exclude=*.msrp_display_actual_price_type%2Crequired_options%2Cupdated_at%2Ccreated_at%2Cattribute_set_id%2Coptions_container%2Cmsrp_display_actual_price_type%2Chas_options%2Cstock.manage_stock%2Cstock.use_config_min_qty%2Cstock.use_config_notify_stock_qty%2Cstock.stock_id%2Cstock.use_config_backorders%2Cstock.use_config_enable_qty_inc%2Cstock.enable_qty_increments%2Cstock.use_config_manage_stock%2Cstock.use_config_min_sale_qty%2Cstock.notify_stock_qty%2Cstock.use_config_max_sale_qty%2Cstock.use_config_max_sale_qty%2Cstock.qty_increments%2Csmall_image%2Csgn%2C*.sgn&request=%7B%22query%22%3A%7B%22bool%22%3A%7B%22filter%22%3A%7B%22terms%22%3A%7B%22configurable_children.sku%22%3A%5B%22Boost-Energy-Drink%22%5D%7D%7D%7D%7D%7D [32m200 [0m16.997 ms - 134[0m
+npm ERR! code ELIFECYCLE
+npm ERR! errno 143
+npm ERR! vue-storefront-api@0.1.0 dev: `nodemon -w src --exec "babel-node src --presets env,stage-0"`
+npm ERR! Exit status 143
+npm ERR! 
+npm ERR! Failed at the vue-storefront-api@0.1.0 dev script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /Users/wgoldsworthy/.npm/_logs/2019-03-18T14_33_09_933Z-debug.log

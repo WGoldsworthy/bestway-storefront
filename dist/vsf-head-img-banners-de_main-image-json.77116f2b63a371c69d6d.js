@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[17],{566:function(e){e.exports={image:{title:"Laufe den Lauf.",subtitle:"Eine Mode kann zum vorherrschenden Stil im Verhalten werden oder die neuesten Kreationen von Designern, Technologen, Ingenieuren und Designmanagern manifestieren.",image:"/assets/main_banner.jpg",link:"/c/frauen-20"}}}}]);
